@@ -201,6 +201,7 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
+    sqlite3 (1.4.2)
     tailwindcss-rails-webpacker (0.1.2)
       rails (>= 6.0.0)
     temple (0.8.2)
@@ -252,6 +253,7 @@ DEPENDENCIES
   selenium-webdriver
   slim-rails
   spring
+  sqlite3 (~> 1.4)
   tailwindcss-rails-webpacker (~> 0.1.2)
   turbolinks (~> 5)
   tzinfo-data
