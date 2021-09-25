@@ -58,7 +58,6 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 group :development, :test do
-  gem 'dotenv'
   gem 'pry'
   gem 'rspec-rails', '~> 5.0.0'
 end
@@ -68,6 +67,7 @@ gem "tailwindcss-rails-webpacker", "~> 0.1.2"
 gem 'spring'
 
 # blog-server
+gem 'dotenv'
 gem "roda"
 gem "sequel"
 gem "sequel_pg", :require=>'sequel'

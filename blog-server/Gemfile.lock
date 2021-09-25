@@ -15,9 +15,9 @@ GEM
     puma (5.5.0)
       nio4r (~> 2.0)
     rack (2.2.3)
-    roda (3.41.0)
+    roda (3.48.0)
       rack
-    sequel (5.41.0)
+    sequel (5.48.0)
     sequel_pg (1.14.0)
       pg (>= 0.18.0, != 1.2.0)
       sequel (>= 4.38.0)
@@ -31,8 +31,7 @@ GEM
     warning (1.2.0)
 
 PLATFORMS
-  x86_64-darwin-20
-  x86_64-linux
+  ruby
 
 DEPENDENCIES
   dotenv
@@ -48,4 +47,4 @@ DEPENDENCIES
   warning
 
 BUNDLED WITH
-   2.2.28
+   1.17.3
