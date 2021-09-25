@@ -1,0 +1,11 @@
+.env
+.env.development
+.env.test
+database.db
+
+/node_modules/
+
+public/*.js
+public/*.css
+public/manifest.json
+.byebug_history
