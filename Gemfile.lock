@@ -99,9 +99,13 @@ GEM
     marcel (1.0.2)
     method_source (1.0.0)
     mini_mime (1.1.1)
+    mini_portile2 (2.6.1)
     minitest (5.14.4)
     msgpack (1.4.2)
     nio4r (2.5.8)
+    nokogiri (1.12.4)
+      mini_portile2 (~> 2.6.1)
+      racc (~> 1.4)
     nokogiri (1.12.4-x86_64-linux)
       racc (~> 1.4)
     pry (0.14.0)
@@ -197,6 +201,8 @@ GEM
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
     sqlite3 (1.4.2)
+    tailwindcss-rails-webpacker (0.1.2)
+      rails (>= 6.0.0)
     temple (0.8.2)
     thor (1.1.0)
     tilt (2.0.10)
@@ -246,6 +252,7 @@ DEPENDENCIES
   slim-rails
   spring
   sqlite3 (~> 1.4)
+  tailwindcss-rails-webpacker (~> 0.1.2)
   turbolinks (~> 5)
   tzinfo-data
   web-console (>= 4.1.0)
