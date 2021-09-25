@@ -4,25 +4,27 @@ require 'uri'
 require 'net/http'
 
 module BlogApi
-  URL = 'http://localhost:4000'
+  BASE_URL = 'http://localhost:4000'
 
   class Client
     def create_post(params)
-      json_response = post_request("#{URL}/posts", { post: params })
+      json_response = Client.post_request("#{BASE_URL}/posts", { post: params })
       Post.new(json_response.fetch('post'), json_response['errors'])
     end
 
     def posts
-      json_response = Net::HTTP.get(URI("#{URL}/posts"))
-      posts = JSON.parse(json_response).fetch('posts')
+      response = Net::HTTP.get(URI("#{BASE_URL}/posts"))
+      posts = JSON.parse(response).fetch('posts')
       PostsCollection.new(posts)
     end
 
-    def comments; end
+    def get_post(id)
+      response = Net::HTTP.get(URI("#{BASE_URL}/posts/#{id}"))
+      post = JSON.parse(response)
+      Post.new(post)
+    end
 
-    private
-
-    def post_request(url, params)
+    def self.post_request(url, params)
       uri = URI(url)
       request = Net::HTTP::Post.new(uri, 'Content-Type' => 'application/json')
       request.body = params.to_json
@@ -32,6 +34,11 @@ module BlogApi
       end
 
       JSON.parse(response.body)
+    end
+
+    def self.get_request(url)
+      res = Net::HTTP.get(URI("#{BASE_URL}#{url}"))
+      JSON.parse(res)
     end
   end
 end

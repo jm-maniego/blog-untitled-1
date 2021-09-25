@@ -16,11 +16,14 @@ RSpec.describe 'BlogApi' do
     #   end
     # end
 
-    # describe '#comments' do
-    #   it 'can fetch comments' do
-    #     expect(BlogApi::Client.new.comments).to eq([])
-    #   end
-    # end
+    describe "#get_post" do
+      it 'can retrieve post attributes' do
+        post = BlogApi::Client.new.get_post(1)
+        expect(post.id).to be_present
+        expect(post.title).to be_present
+        expect(post.body).to be_present
+      end
+    end
 
     describe '#create_post' do
       context 'valid' do
@@ -57,6 +60,19 @@ RSpec.describe 'BlogApi' do
         it 'did not persist' do
           expect{ subject }.to_not change{ BlogApi::Client.new.posts.all.length }
         end
+      end
+    end
+  end
+
+  context "::Post" do
+    let(:post_id) { 1 }
+    subject do
+      BlogApi::Client.new.get_post(post_id)
+    end
+
+    describe "#comments" do
+      it 'can fetch comments' do
+        expect(subject.comments.all.length).to be > 0
       end
     end
   end

@@ -1,7 +1,7 @@
 module BlogApi
   class BaseModel
     def initialize(attrs, errors = {})
-      @attrs = attrs
+      @attributes = attrs
       @errors = errors
 
       attrs.each do |key, value| 
@@ -9,6 +9,6 @@ module BlogApi
       end
     end
 
-    attr_reader :errors
+    attr_reader :id, :attributes, :errors
   end
 end
