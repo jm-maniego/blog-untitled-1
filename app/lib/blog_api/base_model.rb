@@ -3,6 +3,8 @@ module BlogApi
     include ActiveModel::Conversion
     extend ActiveModel::Naming
 
+    attr_reader :id, :attributes, :errors, :created_at, :updated_at
+
     def initialize(attrs, errors = {})
       @attributes = attrs
       @errors = errors
@@ -16,6 +18,5 @@ module BlogApi
       id.present?
     end
 
-    attr_reader :id, :attributes, :errors
   end
 end
