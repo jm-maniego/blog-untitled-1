@@ -108,7 +108,8 @@ GEM
       racc (~> 1.4)
     nokogiri (1.12.4-x86_64-linux)
       racc (~> 1.4)
-    pry (0.14.0)
+    pg (1.2.3)
+    pry (0.14.1)
       coderay (~> 1.1)
       method_source (~> 1.0)
     public_suffix (4.0.6)
@@ -241,6 +242,7 @@ DEPENDENCIES
   capybara (>= 3.26)
   jbuilder (~> 2.7)
   listen (~> 3.3)
+  pg
   pry
   puma (~> 5.0)
   rack-mini-profiler (~> 2.0)
@@ -258,7 +260,7 @@ DEPENDENCIES
   webpacker (~> 5.0)
 
 RUBY VERSION
-   ruby 2.7.1p83
+   ruby 2.5.8p224
 
 BUNDLED WITH
-   2.2.28
+   1.17.3
