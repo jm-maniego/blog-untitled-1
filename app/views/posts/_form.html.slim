@@ -1,0 +1,13 @@
+= form_for @post do |f|
+  - if @post.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@post.errors.count, 'error')} prohibited this post from being saved:"
+      ul
+        - @post.errors.full_messages.each do |message|
+          li = message
+
+  div class="mb-4"
+    = f.text_field :title, class: "font-bold font-sans break-normal text-gray-900 text-3xl md:text-4xl bg-gray-200 block w-full p-4", placeholder: "Title"
+  div class="mb-4"
+    = f.text_area :body, class: "bg-gray-200 block w-full p-4 text-xl", placeholder: "Body"
+  .actions = f.submit "Save", class: "block bg-green-500 p-3 w-full text-white"

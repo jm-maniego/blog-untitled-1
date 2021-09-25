@@ -16,5 +16,9 @@ module BlogApi
         @scopes.push(-> (item) { item.send(key) === value })
       end
     end
+
+    def length
+      @items.length
+    end
   end
 end

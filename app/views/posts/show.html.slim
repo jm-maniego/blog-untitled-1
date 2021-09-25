@@ -1,12 +1,12 @@
 p class="font-sans text-base md:text-sm text-green-500 font-bold"
-  a href="/posts" class="text-base md:text-sm text-green-500 font-bold no-underline hover:underline" < Back to posts
+  a href="#{posts_path}" class="text-base md:text-sm text-green-500 font-bold no-underline hover:underline" < Back to posts
 h1 class='font-bold font-sans break-normal text-gray-900 pt-6 pb-2 text-3xl md:text-4xl' = @post.title
 p class="text-sm md:text-base font-normal text-gray-600" = "Published at #{@post.created_at}"
 
 p class="py-6 text-xl"
   = @post.body
 
-h1 class='font-bold font-sans break-normal text-gray-900 pt-6 pb-2 text-3xl md:text-4xl' Responses
+h1 class='font-bold font-sans break-normal text-gray-900 pt-6 pb-2 text-3xl md:text-4xl' = "Responses (#{@comments.length})"
 
 div
   - @comments.each do |comment|
