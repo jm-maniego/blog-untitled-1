@@ -1,0 +1,4 @@
+document.getElementById("comments-list").insertAdjacentHTML(
+  'beforeend',
+  "<%= escape_javascript(render partial: 'comments/item', locals: { comment: @comment }) %>"
+)

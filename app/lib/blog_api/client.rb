@@ -8,24 +8,29 @@ module BlogApi
 
   class Client
     def create_post(params)
-      json_response = Client.post_request("#{BASE_URL}/posts", { post: params })
+      json_response = Client.post_request('/posts', { post: params })
       Post.new(json_response.fetch('post'), json_response['errors'])
     end
 
+    def create_comment(params)
+      post_id = params.fetch(:post_id)
+      json_response = Client.post_request("/posts/#{post_id}/comments", { comment: params })
+      Comment.new(json_response.fetch('comment').merge('post_id' => post_id))
+    end
+
     def posts
-      response = Net::HTTP.get(URI("#{BASE_URL}/posts"))
-      posts = JSON.parse(response).fetch('posts')
+      json_response = Client.get_request('/posts')
+      posts = json_response.fetch('posts')
       PostsCollection.new(posts)
     end
 
     def get_post(id)
-      response = Net::HTTP.get(URI("#{BASE_URL}/posts/#{id}"))
-      post = JSON.parse(response)
-      Post.new(post)
+      json_response = Client.get_request("/posts/#{id}")
+      Post.new(json_response)
     end
 
     def self.post_request(url, params)
-      uri = URI(url)
+      uri = URI("#{BASE_URL}#{url}")
       request = Net::HTTP::Post.new(uri, 'Content-Type' => 'application/json')
       request.body = params.to_json
 

@@ -16,7 +16,7 @@ RSpec.describe 'BlogApi' do
     #   end
     # end
 
-    describe "#get_post" do
+    describe '#get_post' do
       it 'can retrieve post attributes' do
         post = BlogApi::Client.new.get_post(1)
         expect(post.id).to be_present
@@ -26,9 +26,13 @@ RSpec.describe 'BlogApi' do
     end
 
     describe '#create_post' do
+      subject do
+        BlogApi::Client.new.create_post(params)
+      end
+
       context 'valid' do
-        subject do
-          BlogApi::Client.new.create_post({ title: 'Hello world title', body: 'Hello world body' })
+        let(:params) do
+          { title: 'Hello world title', body: 'Hello world body' }
         end
 
         it 'has title' do
@@ -44,33 +48,46 @@ RSpec.describe 'BlogApi' do
         end
 
         it 'has persisted' do
-          expect{ subject }.to change{ BlogApi::Client.new.posts.all.length }.by(1)
+          expect { subject }.to change { BlogApi::Client.new.posts.all.length }.by(1)
         end
       end
 
       context 'invalid' do
-        subject do
-          BlogApi::Client.new.create_post({})
+        let(:params) do
+          {}
         end
 
-        it 'can create post' do
+        it 'cannot create post' do
           expect(subject.errors).to be_present
         end
 
         it 'did not persist' do
-          expect{ subject }.to_not change{ BlogApi::Client.new.posts.all.length }
+          expect { subject }.to_not change { BlogApi::Client.new.posts.all.length }
         end
+      end
+    end
+
+    describe '#create_post' do
+      subject do
+        BlogApi::Client.new.create_comment(params)
+      end
+      let(:params) {
+        { name: "Anonymous", body: "Hello world comment", post_id: 1 }
+      }
+
+      it 'can add comment to post' do
+        expect{ subject }.to change{ BlogApi::Client.new.get_post(1).comments.all.length }.by(1)
       end
     end
   end
 
-  context "::Post" do
+  context '::Post' do
     let(:post_id) { 1 }
     subject do
       BlogApi::Client.new.get_post(post_id)
     end
 
-    describe "#comments" do
+    describe '#comments' do
       it 'can fetch comments' do
         expect(subject.comments.all.length).to be > 0
       end
