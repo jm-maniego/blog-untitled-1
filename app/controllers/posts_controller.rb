@@ -13,4 +13,15 @@ class PostsController < ApplicationController
   def new
     @post = BlogApi::Post.new({})
   end
+
+  def create
+    @post = BlogApi::Client.new.create_post(post_params)
+    redirect_to @post
+  end
+
+  private
+
+  def post_params
+    params.require(:blog_api_post).permit(:title, :body)
+  end
 end
