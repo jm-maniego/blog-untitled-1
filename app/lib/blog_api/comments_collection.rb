@@ -12,5 +12,11 @@ module BlogApi
         post: post
       })
     end
+
+    def each
+      all.each do |attributes|
+        yield Comment.new(attributes)
+      end
+    end
   end
 end

@@ -7,5 +7,6 @@ class PostsController < ApplicationController
   def show
     blogapi_client = BlogApi::Client.new
     @post = blogapi_client.get_post(params[:id])
+    @comments = @post.comments
   end
 end
