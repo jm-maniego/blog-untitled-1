@@ -1,5 +1,4 @@
 require "roda"
-require 'pry'
 require_relative "./models"
 
 class App < Roda

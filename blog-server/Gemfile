@@ -8,7 +8,7 @@ gem "roda"
 gem "puma"
 
 gem "sequel"
-gem "sequel_pg"
+gem "sequel_pg", :require=>'sequel'
 
 gem "slim"
 gem "pry"
@@ -16,7 +16,7 @@ gem "pry"
 # gem "oj"
 # gem "http"
 
-group :development do
+group :development, :production do
   gem "shotgun"
 end
 

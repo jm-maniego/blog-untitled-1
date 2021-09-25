@@ -65,3 +65,10 @@ end
 gem 'slim-rails'
 gem "tailwindcss-rails-webpacker", "~> 0.1.2"
 gem 'spring'
+
+# blog-server
+gem "roda"
+gem "sequel"
+gem "sequel_pg", :require=>'sequel'
+gem "slim"
+gem "shotgun"
