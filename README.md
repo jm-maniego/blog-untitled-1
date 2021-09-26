@@ -1,5 +1,12 @@
 # README
 
+### Heroku
+https://blooming-gorge-63212.herokuapp.com/posts
+
+### Run locally
+```
+  foreman start -f Procfile.dev
+```
 
 * Ruby version
 ```
@@ -15,9 +22,4 @@
 * How to run the test suite
 ```
   rspec
-```
-
-### Run locally
-```
-  foreman start -f Procfile.dev
 ```
